@@ -1,8 +1,8 @@
 Attribute VB_Name = "Module1"
 Option Compare Text
 
-Function ДательныйП(Yacheika) As String
-    Application.Volatile True    ' автопересчёт формулы на листе
+Function Р”Р°С‚РµР»СЊРЅС‹Р№Рџ(Yacheika) As String
+    Application.Volatile True    ' Г ГўГІГ®ГЇГҐГ°ГҐГ±Г·ВёГІ ГґГ®Г°Г¬ГіГ«Г» Г­Г  Г«ГЁГ±ГІГҐ
     Dim oHttp As Object
     Dim strURL As String
     Dim EncodeURL As String
@@ -21,7 +21,7 @@ Function ДательныйП(Yacheika) As String
     End If
     On Error GoTo 0
     If oHttp Is Nothing Then
-        MsgBox "Не удалось инициализировать объект MSXML!"
+        MsgBox "ГЌГҐ ГіГ¤Г Г«Г®Г±Гј ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§ГЁГ°Г®ГўГ ГІГј Г®ГЎГєГҐГЄГІ MSXML!"
         Exit Function
     End If
     
@@ -34,15 +34,15 @@ Function ДательныйП(Yacheika) As String
     .send
     End With
     
-    'НАЧАЛО ПАРСЕРА
+    'ГЌГЂГ—ГЂГ‹ГЋ ГЏГЂГђГ‘Г…ГђГЂ
     
-    'КОНЕЦ ПАРСЕРА
+    'ГЉГЋГЌГ…Г– ГЏГЂГђГ‘Г…ГђГЂ
     
     Prosklonyat = oHttp.responseText
 End Function
 
 Function GetHTTPResponse(ByVal sURL As String) As String
-    Application.Volatile True    ' автопересчёт формулы на листе
+    Application.Volatile True    ' Г ГўГІГ®ГЇГҐГ°ГҐГ±Г·ВёГІ ГґГ®Г°Г¬ГіГ«Г» Г­Г  Г«ГЁГ±ГІГҐ
     Dim oXMLHTTP As Object
     
     On Error Resume Next
@@ -50,7 +50,7 @@ Function GetHTTPResponse(ByVal sURL As String) As String
    
     On Error GoTo 0
     If oXMLHTTP Is Nothing Then
-        MsgBox "Не удалось инициализировать объект MSXML!"
+        MsgBox "ГЌГҐ ГіГ¤Г Г«Г®Г±Гј ГЁГ­ГЁГ¶ГЁГ Г«ГЁГ§ГЁГ°Г®ГўГ ГІГј Г®ГЎГєГҐГЄГІ MSXML!"
         Exit Function
     End If
     
@@ -64,67 +64,67 @@ Function GetHTTPResponse(ByVal sURL As String) As String
         
     Set oXMLHTTP = Nothing
 End Function
-Function Родительный_падеж(Yacheika As String) As String
-Application.Volatile True ' автопересчёт формулы на листе
+Function ГђГ®Г¤ГЁГІГҐГ«ГјГ­Г»Г©_ГЇГ Г¤ГҐГ¦(Yacheika As String) As String
+Application.Volatile True ' Г ГўГІГ®ГЇГҐГ°ГҐГ±Г·ВёГІ ГґГ®Г°Г¬ГіГ«Г» Г­Г  Г«ГЁГ±ГІГҐ
 
 EncodedUrl = WorksheetFunction.EncodeURL(Yacheika)
-текст = GetHTTPResponse("https://cityninja.ru/morpher/" + EncodedUrl)
-'MsgBox текст
-НачальныйТекст = "GENT"
-Начало = InStr(1, текст, НачальныйТекст) + Len(НачальныйТекст) + 3
-Подстрока = Mid(текст, Начало, 200)
-Конец = InStr(1, Подстрока, "DATV") - 4
-Родительный_падеж = Mid(текст, Начало, Конец)
+ГІГҐГЄГ±ГІ = GetHTTPResponse("https://cityninja.ru/morpher/" + EncodedUrl)
+'MsgBox ГІГҐГЄГ±ГІ
+ГЌГ Г·Г Г«ГјГ­Г»Г©Г’ГҐГЄГ±ГІ = "GENT"
+ГЌГ Г·Г Г«Г® = InStr(1, ГІГҐГЄГ±ГІ, ГЌГ Г·Г Г«ГјГ­Г»Г©Г’ГҐГЄГ±ГІ) + Len(ГЌГ Г·Г Г«ГјГ­Г»Г©Г’ГҐГЄГ±ГІ) + 3
+ГЏГ®Г¤Г±ГІГ°Г®ГЄГ  = Mid(ГІГҐГЄГ±ГІ, ГЌГ Г·Г Г«Г®, 200)
+ГЉГ®Г­ГҐГ¶ = InStr(1, ГЏГ®Г¤Г±ГІГ°Г®ГЄГ , "DATV") - 4
+ГђГ®Г¤ГЁГІГҐГ«ГјГ­Г»Г©_ГЇГ Г¤ГҐГ¦ = Mid(ГІГҐГЄГ±ГІ, ГЌГ Г·Г Г«Г®, ГЉГ®Г­ГҐГ¶)
 End Function
 
-Function Дательный_падеж(Yacheika As String) As String
-Application.Volatile True ' автопересчёт формулы на листе
+Function Г„Г ГІГҐГ«ГјГ­Г»Г©_ГЇГ Г¤ГҐГ¦(Yacheika As String) As String
+Application.Volatile True ' Г ГўГІГ®ГЇГҐГ°ГҐГ±Г·ВёГІ ГґГ®Г°Г¬ГіГ«Г» Г­Г  Г«ГЁГ±ГІГҐ
 
 EncodedUrl = WorksheetFunction.EncodeURL(Yacheika)
-текст = GetHTTPResponse("https://cityninja.ru/morpher/" + EncodedUrl)
-'MsgBox текст
-НачальныйТекст = "DATV"
-Начало = InStr(1, текст, НачальныйТекст) + Len(НачальныйТекст) + 3
-Подстрока = Mid(текст, Начало, 200)
-Конец = InStr(1, Подстрока, "ACCS") - 4
-Дательный_падеж = Mid(текст, Начало, Конец)
+ГІГҐГЄГ±ГІ = GetHTTPResponse("https://cityninja.ru/morpher/" + EncodedUrl)
+'MsgBox ГІГҐГЄГ±ГІ
+ГЌГ Г·Г Г«ГјГ­Г»Г©Г’ГҐГЄГ±ГІ = "DATV"
+ГЌГ Г·Г Г«Г® = InStr(1, ГІГҐГЄГ±ГІ, ГЌГ Г·Г Г«ГјГ­Г»Г©Г’ГҐГЄГ±ГІ) + Len(ГЌГ Г·Г Г«ГјГ­Г»Г©Г’ГҐГЄГ±ГІ) + 3
+ГЏГ®Г¤Г±ГІГ°Г®ГЄГ  = Mid(ГІГҐГЄГ±ГІ, ГЌГ Г·Г Г«Г®, 200)
+ГЉГ®Г­ГҐГ¶ = InStr(1, ГЏГ®Г¤Г±ГІГ°Г®ГЄГ , "ACCS") - 4
+Г„Г ГІГҐГ«ГјГ­Г»Г©_ГЇГ Г¤ГҐГ¦ = Mid(ГІГҐГЄГ±ГІ, ГЌГ Г·Г Г«Г®, ГЉГ®Г­ГҐГ¶)
 End Function
 
-Function Винительный_падеж(Yacheika As String) As String
-Application.Volatile True ' автопересчёт формулы на листе
+Function Г‚ГЁГ­ГЁГІГҐГ«ГјГ­Г»Г©_ГЇГ Г¤ГҐГ¦(Yacheika As String) As String
+Application.Volatile True ' Г ГўГІГ®ГЇГҐГ°ГҐГ±Г·ВёГІ ГґГ®Г°Г¬ГіГ«Г» Г­Г  Г«ГЁГ±ГІГҐ
 
 EncodedUrl = WorksheetFunction.EncodeURL(Yacheika)
-текст = GetHTTPResponse("https://cityninja.ru/morpher/" + EncodedUrl)
-'MsgBox текст
-НачальныйТекст = "ACCS"
-Начало = InStr(1, текст, НачальныйТекст) + Len(НачальныйТекст) + 3
-Подстрока = Mid(текст, Начало, 200)
-Конец = InStr(1, Подстрока, "ABLT") - 4
-Винительный_падеж = Mid(текст, Начало, Конец)
+ГІГҐГЄГ±ГІ = GetHTTPResponse("https://cityninja.ru/morpher/" + EncodedUrl)
+'MsgBox ГІГҐГЄГ±ГІ
+ГЌГ Г·Г Г«ГјГ­Г»Г©Г’ГҐГЄГ±ГІ = "ACCS"
+ГЌГ Г·Г Г«Г® = InStr(1, ГІГҐГЄГ±ГІ, ГЌГ Г·Г Г«ГјГ­Г»Г©Г’ГҐГЄГ±ГІ) + Len(ГЌГ Г·Г Г«ГјГ­Г»Г©Г’ГҐГЄГ±ГІ) + 3
+ГЏГ®Г¤Г±ГІГ°Г®ГЄГ  = Mid(ГІГҐГЄГ±ГІ, ГЌГ Г·Г Г«Г®, 200)
+ГЉГ®Г­ГҐГ¶ = InStr(1, ГЏГ®Г¤Г±ГІГ°Г®ГЄГ , "ABLT") - 4
+Г‚ГЁГ­ГЁГІГҐГ«ГјГ­Г»Г©_ГЇГ Г¤ГҐГ¦ = Mid(ГІГҐГЄГ±ГІ, ГЌГ Г·Г Г«Г®, ГЉГ®Г­ГҐГ¶)
 End Function
 
-Function Творительный_падеж(Yacheika As String) As String
-Application.Volatile True ' автопересчёт формулы на листе
+Function Г’ГўГ®Г°ГЁГІГҐГ«ГјГ­Г»Г©_ГЇГ Г¤ГҐГ¦(Yacheika As String) As String
+Application.Volatile True ' Г ГўГІГ®ГЇГҐГ°ГҐГ±Г·ВёГІ ГґГ®Г°Г¬ГіГ«Г» Г­Г  Г«ГЁГ±ГІГҐ
 
 EncodedUrl = WorksheetFunction.EncodeURL(Yacheika)
-текст = GetHTTPResponse("https://cityninja.ru/morpher/" + EncodedUrl)
-'MsgBox текст
-НачальныйТекст = "ABLT"
-Начало = InStr(1, текст, НачальныйТекст) + Len(НачальныйТекст) + 3
-Подстрока = Mid(текст, Начало, 200)
-Конец = InStr(1, Подстрока, "LOCT") - 4
-Творительный_падеж = Mid(текст, Начало, Конец)
+ГІГҐГЄГ±ГІ = GetHTTPResponse("https://cityninja.ru/morpher/" + EncodedUrl)
+'MsgBox ГІГҐГЄГ±ГІ
+ГЌГ Г·Г Г«ГјГ­Г»Г©Г’ГҐГЄГ±ГІ = "ABLT"
+ГЌГ Г·Г Г«Г® = InStr(1, ГІГҐГЄГ±ГІ, ГЌГ Г·Г Г«ГјГ­Г»Г©Г’ГҐГЄГ±ГІ) + Len(ГЌГ Г·Г Г«ГјГ­Г»Г©Г’ГҐГЄГ±ГІ) + 3
+ГЏГ®Г¤Г±ГІГ°Г®ГЄГ  = Mid(ГІГҐГЄГ±ГІ, ГЌГ Г·Г Г«Г®, 200)
+ГЉГ®Г­ГҐГ¶ = InStr(1, ГЏГ®Г¤Г±ГІГ°Г®ГЄГ , "LOCT") - 4
+Г’ГўГ®Г°ГЁГІГҐГ«ГјГ­Г»Г©_ГЇГ Г¤ГҐГ¦ = Mid(ГІГҐГЄГ±ГІ, ГЌГ Г·Г Г«Г®, ГЉГ®Г­ГҐГ¶)
 End Function
 
-Function Предложный_падеж(Yacheika As String) As String
-Application.Volatile True ' автопересчёт формулы на листе
+Function ГЏГ°ГҐГ¤Г«Г®Г¦Г­Г»Г©_ГЇГ Г¤ГҐГ¦(Yacheika As String) As String
+Application.Volatile True ' Г ГўГІГ®ГЇГҐГ°ГҐГ±Г·ВёГІ ГґГ®Г°Г¬ГіГ«Г» Г­Г  Г«ГЁГ±ГІГҐ
 
 EncodedUrl = WorksheetFunction.EncodeURL(Yacheika)
-текст = GetHTTPResponse("https://cityninja.ru/morpher/" + EncodedUrl)
-'MsgBox текст
-НачальныйТекст = "LOCT"
-Начало = InStr(1, текст, НачальныйТекст) + Len(НачальныйТекст) + 3
-Подстрока = Mid(текст, Начало, 200)
-Конец = InStr(1, Подстрока, "}") - 2
-Предложный_падеж = Mid(текст, Начало, Конец)
+ГІГҐГЄГ±ГІ = GetHTTPResponse("https://cityninja.ru/morpher/" + EncodedUrl)
+'MsgBox ГІГҐГЄГ±ГІ
+ГЌГ Г·Г Г«ГјГ­Г»Г©Г’ГҐГЄГ±ГІ = "LOCT"
+ГЌГ Г·Г Г«Г® = InStr(1, ГІГҐГЄГ±ГІ, ГЌГ Г·Г Г«ГјГ­Г»Г©Г’ГҐГЄГ±ГІ) + Len(ГЌГ Г·Г Г«ГјГ­Г»Г©Г’ГҐГЄГ±ГІ) + 3
+ГЏГ®Г¤Г±ГІГ°Г®ГЄГ  = Mid(ГІГҐГЄГ±ГІ, ГЌГ Г·Г Г«Г®, 200)
+ГЉГ®Г­ГҐГ¶ = InStr(1, ГЏГ®Г¤Г±ГІГ°Г®ГЄГ , "}") - 2
+ГЏГ°ГҐГ¤Г«Г®Г¦Г­Г»Г©_ГЇГ Г¤ГҐГ¦ = Mid(ГІГҐГЄГ±ГІ, ГЌГ Г·Г Г«Г®, ГЉГ®Г­ГҐГ¶)
 End Function
